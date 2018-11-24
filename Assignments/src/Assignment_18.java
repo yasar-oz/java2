@@ -1,3 +1,5 @@
+import java.util.*;
+
 //1. Create a program using arrays that sorts a list of integers in descending order. 
 //	Descending order is highest value to lowest.
 //    In other words if the array had the values in int 106,26,81,5,15 
@@ -13,15 +15,42 @@ public class Assignment_18 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] array = new int[] {3,4,6,9,15,106,26,81,5,15};
-		int[] sortedArray = new int [array.length];
-		sortedArray = bubbleSort(array);
-		for (int element : array) {
-			System.out.println(element);
-		}
+//		int[] array = new int[] {3,4,6,9,15,106,26,81,5,15};
+		int[] array = getInteger();
+		int[] sortedArray = bubbleSort(array);
+		printArray(sortedArray);
 		
 	}
 	
+	
+	public static int [] getInteger () {
+		Scanner scanner = new Scanner (System.in);
+		
+		System.out.println("How many numbers would you like to enter?");
+		int inputNumber = scanner.nextInt();
+		
+		while (inputNumber<0||inputNumber>10){
+			inputNumber = scanner.nextInt();
+		} 
+		
+		int [] arrayUserInput = new int[inputNumber];
+		
+		for (int i = 0; i < inputNumber ; i++) {
+			System.out.println("Please enter number #"+(i+1));
+			arrayUserInput[i] = scanner.nextInt();
+		}	
+		scanner.close();
+		return arrayUserInput;
+		
+	}
+	
+	public static void printArray (int [] array) {
+		System.out.println("-------------Printing... ------------");
+		for (int element : array) {
+			System.out.println(element);
+		}
+		System.out.println("=====Printing successfully completed=====");
+	}
 	
 	
 	public static int[] bubbleSort(int [] array)  { 
@@ -35,7 +64,8 @@ public class Assignment_18 {
                     array[j+1] = temp; 
                 } 
         }
+        System.out.println("=====Sorting Array successfully completed=====");
         return array;
     }
-
+	
 }
